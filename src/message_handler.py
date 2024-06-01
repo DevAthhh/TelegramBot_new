@@ -4,6 +4,7 @@ from telebot import types
 from src.helper import helpers
 from src.config import TOKEN
 from src import writting_repository as wr
+from src import solves
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -35,7 +36,7 @@ def mh_bot():
                 helpers.debug_msg('mh', 'callback - report')
             elif call.data == 'start':
                 bot.delete_message(call.message.chat.id, call.message.id)
-                bot.send_message(call.message.chat.id, 'Wow, you\'re brave! Well, look what I can say, judging by my data, the market will go up! ⬆️', reply_markup=markup_back)
+                bot.send_message(call.message.chat.id, solves.s_main(), reply_markup=markup_back)
                 helpers.debug_msg('mh', 'callback - start')
             elif call.data == 'back':
                 bot.delete_message(call.message.chat.id, call.message.id)

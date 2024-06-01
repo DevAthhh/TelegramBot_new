@@ -112,4 +112,4 @@ def get_info():
     for i in range(len(lst_7_kline)):
         _res_volumes.append(lst_7_kline[i]['volume'])
     
-    return [_res_trend, _res_color_arr, _res_up, _res_down, _res_volumes, _res_l_shadow_arr_high, _res_l_shadow_arr_low, _res_body_arr, _res_pot]
+    return [_res_trend, _res_color_arr, _res_up, _res_down, _res_volumes, [_res_l_shadow_arr_high, _res_l_shadow_arr_low], _res_body_arr, _res_pot]
