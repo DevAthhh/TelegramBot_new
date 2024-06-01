@@ -1,9 +1,15 @@
-import telebot
+import asyncio
 
-bot = telebot.TeleBot('7300492927:AAF6BOO36Z_OyRRBXlNu-JqsaBK5PQqNP6Y')
+from src import writting_repository as wr
+from src import message_handler as mh
+# async def writting_repository():
+#     wr.wr_main()
 
-@bot.message_handler(content_types=['text'])
-def start_message(message):
-    bot.send_message(message.chat.id, message.text)
 
-bot.polling(none_stop=True)
+async def waiting_user():
+    mh.mh_main()
+    
+async def main():
+    await asyncio.gather(waiting_user())
+
+asyncio.run(main())
