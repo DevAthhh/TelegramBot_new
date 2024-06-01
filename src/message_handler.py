@@ -32,11 +32,14 @@ def mh_bot():
             if call.data == 'report':
                 bot.delete_message(call.message.chat.id, call.message.id)
                 bot.send_message(call.message.chat.id, 'Report', reply_markup=markup_back)
+                helpers.debug_msg('mh', 'callback - report')
             elif call.data == 'start':
                 bot.delete_message(call.message.chat.id, call.message.id)
                 bot.send_message(call.message.chat.id, 'Wow, you\'re brave! Well, look what I can say, judging by my data, the market will go up! ⬆️', reply_markup=markup_back)
+                helpers.debug_msg('mh', 'callback - start')
             elif call.data == 'back':
                 bot.delete_message(call.message.chat.id, call.message.id)
+                helpers.debug_msg('mh', 'callback - back')
                 start_message(call.message)
     
     bot.polling(none_stop=True, interval=0)
