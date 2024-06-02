@@ -51,12 +51,21 @@ def get_info():
     
     #   Potential _res_pot
     _res_pot = 0
+    _res_trend = 0
+
     for i in range(len(lst_7_kline) - 1):
         if lst_7_kline[i]['open'] > lst_7_kline[i + 1]['open']:
             _res_pot += 1
         else:
             _res_pot -= 1
+        
+        if lst_7_kline[i]['open'] > lst_7_kline[i + 1]['open']:
+            _res_trend += 1
+        else:
+            _res_trend -= 1
+
     _res_pot = 'down' if _res_pot > 0 else 'up'
+    _res_trend = 'down' if _res_trend > 0 else 'up'
 
     #   color _res_color_arr
     _res_color_arr = []
@@ -67,16 +76,11 @@ def get_info():
             _res_color_arr.append('red')
 
     #   trend _res_trend
-    _res_trend = 0
-    for i in range(len(lst_7_kline) - 1):
-        if lst_7_kline[i]['open'] > lst_7_kline[i + 1]['open']:
-            _res_trend += 1
-        else:
-            _res_trend -= 1
-    _res_trend = 'down' if _res_trend > 0 else 'up'
 
     #   up level _res_up
     _res_up = 0
+    _res_down = 0
+
     for i in range(len(lst_7_kline) - 1):
         if _res_color_arr[i] == 'green':
             if lst_7_kline[i]['close'] > lst_7_kline[i + 1]['close']:
@@ -84,16 +88,16 @@ def get_info():
         else:
             if lst_7_kline[i]['open'] > lst_7_kline[i + 1]['open']:
                 _res_up = lst_7_kline[i]['close']
-    
-    #   down level _res_down
-    _res_down = 0
-    for i in range(len(lst_7_kline) - 1):
+        
         if _res_color_arr[i] == 'green':
             if lst_7_kline[i]['close'] < lst_7_kline[i + 1]['close']:
                 _res_down = lst_7_kline[i]['close']
         else:
             if lst_7_kline[i]['open'] < lst_7_kline[i + 1]['open']:
                 _res_down = lst_7_kline[i]['close']
+    
+    #   down level _res_down
+
     #   length shadow _res_l_shadow_arr_high
     _res_l_shadow_arr_high = []
     _res_l_shadow_arr_low = []
@@ -103,13 +107,13 @@ def get_info():
     
     #   body _res_body_arr
     _res_body_arr = []
+    _res_volumes = []
+
     for i in range(len(lst_7_kline)):
         _res_body_arr.append(lst_7_kline[i]['close'] - lst_7_kline[i]['open'])
         _res_body_arr[i] = _res_body_arr[i] * -1 if _res_body_arr[i] < 0 else _res_body_arr[i]
-    
-    #   volume _res_volumes
-    _res_volumes = []
-    for i in range(len(lst_7_kline)):
         _res_volumes.append(lst_7_kline[i]['volume'])
     
     return [_res_trend, _res_color_arr, _res_up, _res_down, _res_volumes, [_res_l_shadow_arr_high, _res_l_shadow_arr_low], _res_body_arr, _res_pot]
+
+print(get_info())
