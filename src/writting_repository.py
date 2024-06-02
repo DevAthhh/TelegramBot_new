@@ -40,6 +40,7 @@ class SocketConnection(websocket.WebSocketApp):
                        + str(eval(msg.replace('f', 'F').replace('t', 'T'))['daTa'][0]['volume']) + '}\n')
             file.close()
         print(helpers.debug_msg('wr', 'writing to the file is finished'))
+        msg = 0d
         time.sleep(120)
 
 def get_info():
