@@ -27,7 +27,6 @@ def oracle_move():
             kline[i]['high'] = float(kline[i]['high'])
             kline[i]['low'] = float(kline[i]['low'])
             kline[i]['volume'] = float(kline[i]['volume'])
-        print(kline)
     except Exception as e:
         print('Попытка получить данные не увенчалась успехом')
                 
@@ -114,11 +113,19 @@ def oracle_move():
     elif kline[2]['volume'] - 10 < kline[1]['volume'] < kline[2]['volume'] and kline[1]['color'] == 'RED':
         coefficient += ratings['bad']
 
+    max_coeff = 16
+    min_coeff = -16
+
+    if coefficient >= 0:
+        probability = (coefficient / max_coeff) * 100
+    else:
+        probability = (coefficient / min_coeff) * 100  
+
     # Результат
     if coefficient > 0:
-        return 'UP'
+        return [probability, 'UP']
     elif coefficient < 0:
-        return 'DOWN'
+        return [probability, 'DOWN']
 
 
 
@@ -134,5 +141,3 @@ def oracle_move():
 # Stochastic Oscillator
 # ADX (Average Directional Movement Index)
 # Объемы (Rolling average for smoothing)
-
-print(oracle_move())

@@ -80,5 +80,3 @@ def calc_klines():
                 fr.close()
             
         continue
-
-calc_klines()

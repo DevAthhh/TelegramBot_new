@@ -1,8 +1,9 @@
 
 
-last_action = 'SELL'  # Начальное состояние - не было покупок
 
 def get_signal (probability, up_down):
+
+    last_action = 'SELL'  # Начальное состояние - не было покупок
     if probability > 60 and up_down == 'UP':
         if last_action == 'SELL':
             last_action = 'BUY'

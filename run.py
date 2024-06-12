@@ -1,9 +1,51 @@
-kline = 0
-with open('drb/_klines.cat', 'r') as fr:
-            str_kline = fr.readlines()
-            for i in range(len(str_kline)):
-                str_kline[i] = eval(str_kline[i])
-            kline = str_kline
-            fr.close()
+import telebot
+import threading
+import time
 
-print(kline)
+from src import bs, solves, calcKlines
+from src.config import TOKEN
+
+bot = telebot.TeleBot(TOKEN)
+
+def main():
+    thr_writing.start()
+    thr_bs.start()
+
+def buy_or_sell():
+    while True:
+        bot.send_message(-4217228648, bs_())
+        time.sleep(60)
+
+
+def bs_():
+    with open('drb/_balance.cat', 'r') as fr:
+        balance = float(fr.readlines()[0])
+        fr.close()
+    with open('drb/_transactions.cat', 'r') as fr:
+        trans = int(fr.readlines()[0])
+        fr.close()
+    
+    req = solves.oracle_move()
+    res_ = bs.get_signal(req[0], req[1])
+    if res_ == 'BUY':
+        balance -= float(calcKlines.get_price())
+        trans += 1
+    elif res_ == 'SELL':
+        balance += float(calcKlines.get_price()) * trans
+        trans = 0
+    balance = 0 if balance < 0 else balance
+    
+    with open('drb/_balance.cat', 'w') as fw:
+        fw.write(str(balance))
+        fw.close()
+    with open('drb/_transactions.cat', 'w') as fw:
+        fw.write(str(trans))
+        fw.close()
+
+    return f'Текущий баланс: {balance}💵\nТекущее количество купленных коинов: {trans}🔥\nЧто я сделал? - {res_}❤️'
+
+thr_writing = threading.Thread(target=calcKlines.calc_klines)
+thr_bs = threading.Thread(target=buy_or_sell)
+
+main()
+print('Хей!')
