@@ -122,13 +122,6 @@ def calculate_success_probability(coefficient):
 probability = calculate_success_probability(coefficient)
 print(f"Coefficient: {coefficient}, Success Probability: {probability}%")
 
-# Покупка/Продажа
-if probability > 60% and up_down == 'UP':
-    print('BUYorWAIT')
-elif probability < 60% and up_down == 'UP':
-    print('SELLorWAIT')
-elif up_down == 'DOWN':
-    print('SELLorWAIT')
 
 
 
