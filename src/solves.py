@@ -52,10 +52,10 @@ elif trend == potential == 'NEUTRAL':
     coefficient += ratings['ok']
 
 # Коэффициент в зависимости от областей поддержки и сопротивления
-if kline[1]['color'] == 'GREEN' and # ОБЛАСТЬ СОПРОТИВЛЕНИЯ - 10 < klines[1]['close'] < ОБЛАСТЬ СОПРОТИВЛЕНИЯ + 10: 
-    coefficient += ratings['bad']
-elif kline[1]['color'] == 'RED' and # ОБЛАСТЬ ПОДДЕРЖКИ + 10 < klines[1]['close'] < ОБЛАСТЬ СОПРОТИВЛЕНИЯ - 10: 
-    coefficient += ratings['good']
+# if kline[1]['color'] == 'GREEN' and # ОБЛАСТЬ СОПРОТИВЛЕНИЯ - 10 < klines[1]['close'] < ОБЛАСТЬ СОПРОТИВЛЕНИЯ + 10: 
+#     coefficient += ratings['bad']
+# elif kline[1]['color'] == 'RED' and # ОБЛАСТЬ ПОДДЕРЖКИ + 10 < klines[1]['close'] < ОБЛАСТЬ СОПРОТИВЛЕНИЯ - 10: 
+#     coefficient += ratings['good']
 
 # Тела последних
 body_1 = abs(kline['open'][1] - kline['close'][1]) # тело предпоследней свечи
@@ -90,20 +90,45 @@ elif body_1 > body_2 and kline['color'][1] == 'RED':
     coefficient += ratings['veryBad']
 
 # Коэффициент в зависимости от объемов
-if volume[1] >= volume[2] and kline['color'][1] == 'GREEN':
-    coefficient += ratings['veryGood']
-elif volume[2] - 10 < volume[1] < volume[2] and kline['color'][1] == 'GREEN':
-    coefficient += ratings['good']
-elif volume[1] >= volume[2] and kline['color'][1] == 'RED':
-    coefficient += ratings['veryBad']
-elif volume[2] - 10 < volume[1] < volume[2] and kline['color'][1] == 'RED':
-    coefficient += ratings['bad']
+# if volume[1] >= volume[2] and kline['color'][1] == 'GREEN':
+#     coefficient += ratings['veryGood']
+# elif volume[2] - 10 < volume[1] < volume[2] and kline['color'][1] == 'GREEN':
+#     coefficient += ratings['good']
+# elif volume[1] >= volume[2] and kline['color'][1] == 'RED':
+#     coefficient += ratings['veryBad']
+# elif volume[2] - 10 < volume[1] < volume[2] and kline['color'][1] == 'RED':
+#     coefficient += ratings['bad']
 
 # Результат
 if coefficient > 0:
+    up_down = 'UP'
     print("UP")
 elif coefficient < 0:
+    up_down = 'DOWN'
     print("DOWN")
+
+# Расчет процента
+def calculate_success_probability(coefficient):
+    max_coeff = 16
+    min_coeff = -16
+    
+    if coefficient >= 0:
+        probability = (coefficient / max_coeff) * 100
+    else:
+        probability = (coefficient / min_coeff) * 100  
+    return probability
+
+# Example of usage
+probability = calculate_success_probability(coefficient)
+print(f"Coefficient: {coefficient}, Success Probability: {probability}%")
+
+# Покупка/Продажа
+if probability > 60% and up_down == 'UP':
+    print('BUYorWAIT')
+elif probability < 60% and up_down == 'UP':
+    print('SELLorWAIT')
+elif up_down == 'DOWN':
+    print('SELLorWAIT')
 
 
 
