@@ -89,6 +89,16 @@ elif body_1 == body_2 and kline['color'][1] == 'RED':
 elif body_1 > body_2 and kline['color'][1] == 'RED':
     coefficient += ratings['veryBad']
 
+# Коэффициент в зависимости от объемов
+if volume[1] >= volume[2] and kline['color'][1] == 'GREEN':
+    coefficient += ratings['veryGood']
+elif volume[2] - 10 < volume[1] < volume[2] and kline['color'][1] == 'GREEN':
+    coefficient += ratings['good']
+elif volume[1] >= volume[2] and kline['color'][1] == 'RED':
+    coefficient += ratings['veryBad']
+elif volume[2] - 10 < volume[1] < volume[2] and kline['color'][1] == 'RED':
+    coefficient += ratings['bad']
+
 # Результат
 if coefficient > 0:
     print("UP")
