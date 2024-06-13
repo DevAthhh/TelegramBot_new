@@ -31,7 +31,6 @@ def oracle_move():
         print('Попытка получить данные не увенчалась успехом')
                 
     # Функция для расчета тренда
-    trend = 'DOWN'
     try:
         if kline[25]['close'] > kline[1]['close']:
             trend = 'DOWN'
@@ -41,8 +40,7 @@ def oracle_move():
             trend = 'NEUTRAL'
     except Exception as e:
         print('Недостаточное количество данных для записи тренда')
-    
-    potential = 'DOWN'
+
     # Функция для расчета потенциала
     try:
         if kline[4]['close'] > kline[1]['close']:
