@@ -1,6 +1,7 @@
 import telebot
 import threading
 import time
+import datetime
 
 from src import bs, solves, calcKlines
 from src.config import TOKEN
@@ -42,10 +43,18 @@ def bs_():
         fw.write(str(trans))
         fw.close()
 
-    return f'Текущий баланс: {balance}💵\nТекущее количество купленных коинов: {trans}🔥\nЧто я сделал? - {res_}❤️'
+    return f'Текущий баланс: {balance} 💵\nТекущее количество купленных коинов: {trans}🔥\nЧто я сделал? - {res_} ❤️'
 
 thr_writing = threading.Thread(target=calcKlines.calc_klines)
 thr_bs = threading.Thread(target=buy_or_sell)
 
-main()
-print('Хей!')
+# main()
+
+current_time = datetime.datetime.now().time()
+print('CAT\'s project\nAll licenses are owned by CAT Corporation.')
+while True:
+    print('waiting for 30 or 00 minutes...')
+    if str(current_time)[3:5] == '00' or  str(current_time)[3:5] == '30':
+        main()
+        break
+    time.sleep(60)
