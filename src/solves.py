@@ -41,6 +41,12 @@ def oracle_move():
     except Exception as e:
         print('Недостаточное количество данных для записи тренда')
 
+    for i in range(8):
+        if kline[i]['close'] > kline[i + 1]['close']:
+            up_level = kline[i]['close']
+        elif kline[i]['close'] < kline[i + 1]['close']:
+            down_level = kline[i]['close']
+
     # Функция для расчета потенциала
     try:
         if kline[4]['close'] > kline[1]['close']:
