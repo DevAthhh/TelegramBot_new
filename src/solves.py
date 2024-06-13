@@ -65,10 +65,10 @@ def oracle_move():
         coefficient += ratings['ok']
 
     # Коэффициент в зависимости от областей поддержки и сопротивления
-    # if kline[1]['color'] == 'GREEN' and # ОБЛАСТЬ СОПРОТИВЛЕНИЯ - 10 < klines[1]['close'] < ОБЛАСТЬ СОПРОТИВЛЕНИЯ + 10: 
-    #     coefficient += ratings['bad']
-    # elif kline[1]['color'] == 'RED' and # ОБЛАСТЬ ПОДДЕРЖКИ + 10 < klines[1]['close'] < ОБЛАСТЬ СОПРОТИВЛЕНИЯ - 10: 
-    #     coefficient += ratings['good']
+    if kline[1]['color'] == 'GREEN' and up_level - 50 < kline[1]['close'] < up_level + 50:
+        coefficient += ratings['veryBad']
+    elif kline[1]['color'] == 'RED' and down_level + 50 > kline[1]['close'] > down_level - 50:
+        coefficient += ratings['veryGood']
 
     # Тела последних
     body_1 = abs(kline[1]['open'] - kline[1]['close']) # тело предпоследней свечи
