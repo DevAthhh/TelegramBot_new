@@ -28,6 +28,8 @@ def bs_():
         fr.close()
     
     req = solves.oracle_move()
+    if req == 'NONE':
+        return 'Ну там данных недостаточно, сорян'
     res_ = bs.get_signal(req[0], req[1])
     if res_ == 'BUY':
         balance -= float(calcKlines.get_price())
@@ -78,11 +80,11 @@ thr_sl = threading.Thread(target=stop_loss)
 
 # main()
 
-current_time = datetime.datetime.now().time()
 print('CAT\'s project\nAll licenses are owned by CAT Corporation.')
 while True:
-    print('waiting for 30 or 00 minutes...')
+    current_time = datetime.datetime.now().time()
+    print('waiting for 30 or 00 minutes...\n', str(current_time))
     if str(current_time)[3:5] == '00' or  str(current_time)[3:5] == '30':
         main()
         break
-    time.sleep(60)
+    time.sleep(10)

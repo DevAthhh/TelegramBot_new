@@ -28,12 +28,12 @@ def stop_loss ():
     buy_price = 0
 
     with open('drb/_last_price.cat', 'r') as fr:
-        buy_price = float(fr.readlines[0])
+        buy_price = float(fr.readlines()[0])
         fr.close()
 
-    actual_price = get_price()
-    if actual_price() <= buy_price - 50 and last_action == 'BUY':
+    actual_price = float(get_price())
+    if actual_price <= buy_price - 50 and last_action == 'BUY':
         return 'BUY'
-    elif actual_price() <= buy_price - 100 and last_action == 'BUY':
+    elif actual_price <= buy_price - 100 and last_action == 'BUY':
         last_action = 'SELL'
         return 'SELL'
