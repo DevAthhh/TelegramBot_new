@@ -16,7 +16,7 @@ def main():
 def buy_or_sell():
     while True:
         bot.send_message(-4217228648, bs_())
-        time.sleep(1804)
+        time.sleep(1805)
 
 
 def bs_():
