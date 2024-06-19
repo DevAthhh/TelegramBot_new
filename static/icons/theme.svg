@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f2f2f2;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <circle class="cls-1" cx="256" cy="256" r="95"/>
+  <rect class="cls-1" x="243" y="87" width="25" height="60" rx="12.5" ry="12.5"/>
+  <rect class="cls-1" x="243" y="363" width="25" height="60" rx="12.5" ry="12.5"/>
+  <rect class="cls-1" x="382.5" y="227.5" width="25" height="60" rx="12.5" ry="12.5" transform="translate(652.5 -137.5) rotate(90)"/>
+  <rect class="cls-1" x="106.5" y="227.5" width="25" height="60" rx="12.5" ry="12.5" transform="translate(376.5 138.5) rotate(90)"/>
+  <rect class="cls-1" x="340.02" y="127.36" width="25" height="60" rx="12.5" ry="12.5" transform="translate(214.52 -203.18) rotate(45)"/>
+  <rect class="cls-1" x="144.86" y="322.52" width="25" height="60" rx="12.5" ry="12.5" transform="translate(295.36 -8.02) rotate(45)"/>
+  <rect class="cls-1" x="339.31" y="325.35" width="25" height="60" rx="12.5" ry="12.5" transform="translate(851.85 357.85) rotate(135)"/>
+  <rect class="cls-1" x="144.15" y="130.19" width="25" height="60" rx="12.5" ry="12.5" transform="translate(380.69 162.69) rotate(135)"/>
+</svg>

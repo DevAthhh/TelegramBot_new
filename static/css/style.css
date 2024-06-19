@@ -1,0 +1,122 @@
+html, body {
+    height: 100%; width: 100%;
+    margin: 0; padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+body {
+    background: linear-gradient(to left, #D2EFFF, #F2FCFE);
+}
+
+nav {
+    display: flex;
+    margin: 0; padding: 0;
+    width: 100%;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    margin-top: 50px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.powerBtn {
+    height: 50px; width: 30%;
+    background: #BFB5FF;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.navigation {
+    height: 50%; width: 50px;
+    background: linear-gradient(to bottom, #6190E8, #A7BFE8);
+    margin: 0 10px 0 100px;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.mainMenu {
+    height: 90%; width: 80%;
+    background: linear-gradient(to left, #E2E2E2, #C9D6FF);
+    margin-right: 50px;
+    border-radius: 50px;
+}
+
+.circles {
+    z-index: -1;
+    height: 100%; width: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+.circle1 {
+    background: linear-gradient(#9bf8f3, #5179fc00);
+    border-radius: 100%;
+    height: 935px; width: 935px;
+    position: absolute;
+    top: -300px; left: -300px;
+}
+.circle2 {
+    background: linear-gradient(#9bf8f3, #5179fc00);
+    border-radius: 100%;
+    height: 935px; width: 935px;
+    position: absolute;
+    bottom: -300px; right: -300px;
+}
+
+svg {
+    fill: white;
+    height: 50px; width: 50px;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    outline: none;
+    transition: all .2s;
+}
+button:active {
+    background: #6aff76ad;
+}
+
+
+@media (max-width: 768px) {
+    nav {
+        margin-top: 10px;
+    }   
+
+    .container {
+        margin-top: 10px;
+        flex-direction: column;
+    }
+
+    .navigation {
+        margin: 0;
+        height: 50px; width: 100%;
+        flex-direction: row;
+    }
+
+    .mainMenu {
+        margin: 10px 0 0 0;
+        height: 100%; width: 100%;
+        border-radius: 50px 50px 0 0;
+    }
+
+    .circles {
+        display: none;
+    }
+}
+.nonce {
+    display: none;
+}
